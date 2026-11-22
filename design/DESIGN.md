@@ -16,11 +16,16 @@ If an image and this file disagree, this file wins. If something is missing, ask
 
 Mood: gritty, hand-made, zine / torn-paper. Dark sections alternate with cream paper sections.
 
-**Colors** (Tailwind theme tokens; approximate, sample exact values from the images once and set them in `globals.css`):
-- ink `#0F0E0D`, ink-soft `#1A1816`
-- cream `#F2EADF`, paper `#F7F1E8` (cards)
-- amber `#D9822B` (accents, underlines, "Book Now")
-- heart red `#C0452F` (filled wishlist heart only)
+**Colors.** These are the only colors in the project. The hex values below are approximate; once sampled from the images they live here and in `app/globals.css` and nowhere else. Components use the token names only. Wherever this file says "amber", it means `brand-amber` (Tailwind already has its own `amber` palette, so we don't reuse that name).
+
+| Token (CSS variable) | Hex | Use |
+|---|---|---|
+| `--color-ink` | `#0F0E0D` | dark sections, text on cream |
+| `--color-ink-soft` | `#1A1816` | cards on dark sections |
+| `--color-cream` | `#F2EADF` | cream sections, text on dark |
+| `--color-paper` | `#F7F1E8` | cards on cream |
+| `--color-brand-amber` | `#D9822B` | accents, underlines, "Book Now" |
+| `--color-heart` | `#C0452F` | filled wishlist heart only |
 
 **Fonts** (three, no more):
 - Display brush font for H1 and hero titles (placeholder: Permanent Marker; swap later in one place)
