@@ -7,3 +7,47 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+# Pedal Pals: Project Rules
+
+## Stack (do not add or swap without asking)
+- Next.js App Router, TypeScript strict mode
+- Tailwind CSS + shadcn/ui (Base UI) for primitives; no other UI library
+- PostgreSQL + Prisma 7 (config file is prisma7.config.ts); Auth.js (next-auth v5 beta, Google)
+- Recharts for admin charts; Framer Motion for animation
+- ESLint + Prettier
+
+## Structure
+- app/ routes only, pages stay thin
+- app/(store)/ public pages; app/admin/ admin pages (ADMIN role only)
+- components/ui (shadcn), components/shared (Button, ProductCard, TornDivider, SectionHeading), components/<feature>
+- lib/ helpers; all DB access through lib/db.ts
+- services/ business logic (orderService, shippingFeeService)
+- Validation with zod
+
+## Style
+- Functional components, named exports, one component per file
+- Server components by default; "use client" only when needed
+- Money stored as integer rupiah, never floats
+- Descriptive names, no abbreviations
+
+## Design system
+- Follow design/DESIGN.md for all UI; page images are in /design (one per page, e.g. design/shop.png)
+- Colors via Tailwind theme tokens only (ink, cream, paper, amber); no hard-coded hex in components
+- Three fonts only: brush display (titles), condensed sans (subheadings), Inter (body)
+- Dark and cream sections alternate, separated by <TornDivider />
+- Reuse shared components; never restyle one-off
+
+## Commands
+- Dev: npm run dev
+- Lint: npm run lint
+- Typecheck: npx tsc --noEmit
+- Format: npx prettier --write .
+
+## Workflow
+- One task at a time; for large tasks give a short plan before editing
+- Don't refactor unrelated files
+- Never read or edit .env; add new keys to .env.example
+- Do not install new packages, run prisma migrations, or run git commit/push without asking
+- After changes run lint and typecheck, then summarize what changed
+- Ask if requirements are unclear instead of guessing
