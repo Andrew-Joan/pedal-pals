@@ -1,0 +1,9 @@
+.next
+node_modules
+.claude
+.agents
+.windsurf
+package-lock.json
+skills-lock.json
+design
+tasks
