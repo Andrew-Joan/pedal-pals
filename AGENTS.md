@@ -37,6 +37,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Three fonts only: brush display (titles), condensed sans (subheadings), Inter (body)
 - Dark and cream sections alternate, separated by <TornDivider />
 - Reuse shared components; never restyle one-off
+- Hand-made texture (torn edges, splatters, doodles, grain) comes from assets in public/textures and public/doodles, applied with CSS masks and theme token colors. Never draw them as code shapes.
 
 ## Commands
 - Dev: npm run dev
