@@ -1,9 +1,10 @@
 import React from "react";
+import Link from "next/link";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all duration-200 cursor-pointer select-none disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-brand-amber",
+  "inline-flex items-center justify-center rounded-full font-medium transition-all duration-200 cursor-pointer select-none disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-brand-amber",
   {
     variants: {
       variant: {
@@ -41,10 +42,35 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size }), className)}
       {...props}
     >
       {children}
     </button>
+  );
+}
+
+export interface ButtonLinkProps
+  extends
+    Omit<React.ComponentProps<typeof Link>, "className">,
+    VariantProps<typeof buttonVariants> {
+  className?: string;
+}
+
+/** A link that looks like a Button. Use this instead of putting a Button inside a Link. */
+export function ButtonLink({
+  className,
+  variant,
+  size,
+  children,
+  ...props
+}: ButtonLinkProps) {
+  return (
+    <Link
+      className={cn(buttonVariants({ variant, size }), className)}
+      {...props}
+    >
+      {children}
+    </Link>
   );
 }

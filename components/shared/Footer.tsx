@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Container } from "./Container";
 import { Button } from "./Button";
+import { TornDivider } from "./TornDivider";
 
 interface FooterProps {
   variant?: "slim" | "full";
@@ -41,8 +42,16 @@ export function Footer({ variant = "slim" }: FooterProps) {
   }
 
   return (
-    <footer className="bg-ink text-cream pt-16 pb-8 border-t border-cream/10">
-      <Container>
+    <footer className="grain-ink relative overflow-hidden bg-ink pb-8 pt-28 text-cream sm:pt-36">
+      <TornDivider
+        overlay
+        from="cream"
+        to="ink"
+        variant="a"
+        flip
+        className="absolute inset-x-0 top-0 z-20"
+      />
+      <Container className="relative z-10">
         <div className="bg-ink-soft rounded-2xl p-8 sm:p-12 mb-16 border border-cream/10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="font-heading text-2xl sm:text-3xl font-bold uppercase tracking-wide">

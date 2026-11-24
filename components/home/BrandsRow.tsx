@@ -1,33 +1,40 @@
 import Link from "next/link";
 import { Container } from "@/components/shared/Container";
-import { TornDivider } from "@/components/shared/TornDivider";
+import { Doodle } from "@/components/shared/Doodle";
+import { InkSplatter } from "@/components/shared/InkSplatter";
 
 const brands = ["Shimano", "SRAM", "Specialized", "Cannondale", "Trek"];
 
 export function BrandsRow() {
   return (
-    <section className="bg-cream text-ink pt-16 sm:pt-20 pb-0">
-      <Container>
-        <div className="flex flex-col items-center sm:items-start mb-8 sm:mb-10">
-          <p className="font-heading text-xs sm:text-sm uppercase tracking-widest text-brand-amber font-semibold">
-            Our Brands
-          </p>
-        </div>
+    <section className="grain-cream relative overflow-hidden bg-cream pt-20 text-ink sm:pt-28">
+      <InkSplatter
+        tone="ink"
+        variant={5}
+        className="-right-12 top-0 w-56 opacity-10"
+      />
+      <Doodle
+        name="scribble-2"
+        className="absolute left-10 top-8 hidden w-32 text-ink/15 lg:block"
+      />
 
-        <div className="flex flex-wrap items-center justify-center sm:justify-between gap-6 sm:gap-8 pb-12 sm:pb-16">
+      <Container className="relative z-10">
+        <p className="mb-8 text-center font-heading text-sm font-semibold uppercase tracking-widest text-brand-amber sm:mb-12 sm:text-left sm:text-base">
+          Our Brands
+        </p>
+
+        <div className="flex flex-wrap items-center justify-center gap-8 pb-24 sm:justify-between sm:pb-32">
           {brands.map((brand) => (
             <Link
               key={brand}
               href={`/shop?brand=${brand.toLowerCase()}`}
-              className="font-heading text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wide text-ink/70 hover:text-ink hover:text-brand-amber transition-colors"
+              className="font-heading text-3xl font-bold uppercase tracking-wide text-ink/70 transition-colors hover:text-brand-amber sm:text-4xl md:text-5xl"
             >
               {brand}
             </Link>
           ))}
         </div>
       </Container>
-
-      <TornDivider from="cream" to="ink" seed={19} flip />
     </section>
   );
 }

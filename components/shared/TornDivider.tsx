@@ -26,6 +26,12 @@ interface TornDividerProps {
   variant?: Variant;
   /** Picks a variant when none is given, so several dividers can differ. */
   seed?: number;
+  /**
+   * Draw only the torn paper and leave the rest transparent, so a photo or
+   * background behind it shows through the tear. Position it with className,
+   * e.g. "absolute inset-x-0 bottom-0 z-20".
+   */
+  overlay?: boolean;
   className?: string;
 }
 
@@ -35,6 +41,7 @@ export function TornDivider({
   flip = false,
   variant,
   seed = 0,
+  overlay = false,
   className,
 }: TornDividerProps) {
   const edge = variant ?? VARIANTS[Math.abs(seed) % VARIANTS.length];
@@ -49,7 +56,7 @@ export function TornDivider({
       aria-hidden="true"
       className={cn(
         "pointer-events-none relative block w-full overflow-hidden leading-none",
-        backgroundClass[backdropTone],
+        overlay ? "bg-transparent" : backgroundClass[backdropTone],
         className,
       )}
     >
