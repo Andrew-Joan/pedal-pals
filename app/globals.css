@@ -73,13 +73,15 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* Grain overlays: add .grain-cream to cream sections and .grain-ink to dark sections. */
+
+/* Texture overlays: add .grain-cream to cream sections and .grain-ink to dark sections. */
 .grain-cream,
 .grain-ink {
   position: relative;
   isolation: isolate;
 }
 
+.grain-cream::before,
 .grain-cream::after,
 .grain-ink::after {
   content: "";
@@ -89,11 +91,19 @@
   pointer-events: none;
 }
 
-/* Fine dark specks on cream (generated noise, tiny and tileable). */
+/* Crumpled paper: creases and faint stains (public/textures/paper-crumple.webp). */
+.grain-cream::before {
+  background-image: url("/textures/paper-crumple.webp");
+  background-size: 1600px auto;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
+
+/* Fine dark specks on top of the paper (generated noise, tiny and tileable). */
 .grain-cream::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 220px 220px;
-  opacity: 0.18;
+  opacity: 0.12;
   mix-blend-mode: multiply;
 }
 

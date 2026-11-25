@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { maskStyle } from "@/lib/mask";
+import { SPLATTERS } from "@/lib/doodles";
 
 type Tone = "ink" | "cream" | "amber";
 
@@ -9,19 +10,9 @@ const toneClass: Record<Tone, string> = {
   amber: "bg-brand-amber",
 };
 
-// Width and height of each file in public/textures.
-const SPLATTERS = [
-  [524, 587],
-  [608, 505],
-  [493, 549],
-  [515, 544],
-  [555, 519],
-  [547, 508],
-] as const;
-
 interface InkSplatterProps {
-  /** Which of the 6 splatters, 1 to 6. */
-  variant?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Which splatter, 1 to 16. See the catalog at /dev/decor. */
+  variant?: number;
   /** Picks a variant when none is given. */
   seed?: number;
   /** ink for cream sections, cream or amber for dark sections. */
@@ -39,12 +30,18 @@ export function InkSplatter({
   flip = false,
   className,
 }: InkSplatterProps) {
-  const index = (variant ? variant - 1 : Math.abs(seed) % SPLATTERS.length) as number;
+  const count = SPLATTERS.length;
+  const raw = variant !== undefined ? variant - 1 : seed;
+  const index = ((raw % count) + count) % count;
   const [width, height] = SPLATTERS[index];
   return (
     <span
       aria-hidden="true"
-      className={cn("pointer-events-none absolute block", toneClass[tone], className)}
+      className={cn(
+        "pointer-events-none absolute block",
+        toneClass[tone],
+        className,
+      )}
       style={{
         aspectRatio: `${width} / ${height}`,
         ...maskStyle(`/textures/splatter-${index + 1}.webp`),
