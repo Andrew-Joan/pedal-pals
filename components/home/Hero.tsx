@@ -35,7 +35,7 @@ export function Hero() {
           </h1>
           <Doodle
             name="crown"
-            className="absolute -right-12 -top-6 w-20 rotate-12 text-brand-amber sm:-right-24 sm:-top-10 sm:w-28"
+            className="absolute -right-12 -top-6 w-20 rotate-45 text-brand-amber sm:-right-24 sm:-top-10 sm:w-28"
           />
         </div>
 

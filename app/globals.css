@@ -105,6 +105,65 @@
   mix-blend-mode: screen;
 }
 
+/*
+  Amber frame that draws itself around a card on hover / focus-within.
+  Registered so the angle can animate: the stroke starts at top center,
+  runs counter-clockwise (wrapping left) and closes the loop after 5s.
+*/
+@property --auth-sweep {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.auth-frame::before {
+  content: "";
+  position: absolute;
+  /* Start outside the card border so no light rim peeks through. */
+  inset: -1px;
+  z-index: 2;
+  /* Thickness: bump this (or set --auth-frame-width per card). */
+  padding: var(--auth-frame-width, 4px);
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    var(--color-brand-amber) var(--auth-sweep),
+    transparent 0
+  );
+  /* Mirror horizontally so the arc grows to the left instead of the right. */
+  transform: scaleX(-1);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.auth-frame:hover::before,
+.auth-frame:focus-within::before {
+  opacity: 1;
+  animation: auth-frame-sweep 5s linear forwards;
+}
+
+@keyframes auth-frame-sweep {
+  from {
+    --auth-sweep: 0deg;
+  }
+  to {
+    --auth-sweep: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-frame:hover::before,
+  .auth-frame:focus-within::before {
+    animation: none;
+    --auth-sweep: 360deg;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

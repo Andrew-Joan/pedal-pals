@@ -7,7 +7,7 @@ If an image and this file disagree, this file wins. If something is missing, ask
 
 - **Currency:** Indonesian rupiah. Store integer rupiah, display with a `formatRupiah()` helper (e.g. "Rp 6.499.000"). The mockups show USD; ignore the dollar signs.
 - **Shipping:** the fee is calculated at checkout from distance (`shippingFeeService`). Ignore the "free shipping" claims in the cart, product page and FAQ.
-- **Login:** Google SSO only. Ignore the email/password forms, Apple button, "Remember me" and "Forgot password".
+- **Login:** Google SSO plus email/password. The manual registration and login forms are included so the full auth UI is demonstrated; the Apple button and the "256-bit SSL" strip stay out. Backend wiring comes later.
 - **Not built:** product reviews and star ratings, "wishlist items stay for 30 days" text, "256-bit SSL" claims.
 - **No mockup exists for:** Brands, Checkout, Admin, empty states. Build them in the same style (see "No mockup" below).
 - **Content:** use realistic fake data. Store address "123 Cycling Ave, Jakarta, Indonesia", email info@pedalpals.id, phone +62 812 3456 7890.
@@ -93,8 +93,14 @@ Mood: gritty, hand-made, zine / torn-paper. Dark sections alternate with cream p
 - Bottom dark bar: "3 items • Estimated total if all added: ..." with outline "Continue Shopping" and cream "Add All to Cart".
 
 ### Account `/account`
-- Hero with sunset rider photo: brush "MY ACCOUNT" with amber brush underline, script-style line "Welcome back, rider!"
-- One cream card titled "LOGIN" (user icon, amber underline) with a single "Continue with Google" button. Logged-in view of the same route: profile, order history, saved addresses (no mockup; keep simple).
+- Login page. Hero with sunset rider photo: brush "MY ACCOUNT" with amber brush underline, script-style line "Welcome back, rider!".
+- Single centered cream **LOGIN** card (user icon, amber underline): Email Address, Password with a show/hide toggle, "Remember me", "Forgot password?", dark "Login" button, "or continue with", and an outline "Continue with Google" SSO button. Footer link: "New to Pedal Pals? Create an account" → `/account/register`.
+- Ignore the Apple button and the "256-bit SSL" strip. The UI supports both SSO and manual accounts; backend comes later.
+- Logged-in view of the same route: profile, order history, saved addresses (no mockup; keep simple).
+
+### Register `/account/register`
+- Same hero style, brush "JOIN US" with amber brush underline and the line "Create your account and ride with us.".
+- Single centered cream **CREATE ACCOUNT** card (user-plus icon, amber underline): Full Name, Email Address, Password (hint: "Minimum 8 characters • include a number & symbol"), Confirm Password, Terms & Privacy checkbox, and a dark "Sign Up" button. Footer link: "Already have an account? Login instead" → `/account`.
 
 ### Contact `/contact`
 - Dark paper-texture background: brush "CONTACT US", script line "Let's ride together." with arrows.
