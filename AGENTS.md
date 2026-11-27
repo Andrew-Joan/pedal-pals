@@ -58,3 +58,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Do not install new packages, run prisma migrations, or run git commit/push without asking
 - After changes run lint and typecheck, then summarize what changed
 - Ask if requirements are unclear instead of guessing
+
+## Routes and structure
+
+- All URLs live in lib/routes.ts. Never write an internal path like "/shop" in a component; use routes.shop, shopCategoryHref(), productHref().
+- app/(store) = public pages with the shop header; app/(auth) = login and register; /account = logged-in dashboard; app/admin = admin (role check).
+- Components are grouped by feature: components/home, about, auth, shared, ui.
+- Torn edges are always overlay dividers, placed inside the dark section that shows through the tear. Never inside a cream section that has its own grain.
+- Decorations: 4 to 10 per section, hidden below lg, theme tokens only, names from /dev/decor.

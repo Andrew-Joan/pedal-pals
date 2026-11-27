@@ -73,7 +73,6 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-
 /* Texture overlays: add .grain-cream to cream sections and .grain-ink to dark sections. */
 .grain-cream,
 .grain-ink {
@@ -137,6 +136,7 @@
   border-radius: inherit;
   pointer-events: none;
   background: conic-gradient(
+    from var(--auth-frame-start, 38deg),
     var(--color-brand-amber) var(--auth-sweep),
     transparent 0
   );
@@ -155,6 +155,22 @@
 .auth-frame:focus-within::before {
   opacity: 1;
   animation: auth-frame-sweep 5s linear forwards;
+}
+
+/* The hover frame starts at the top-left corner, where the star sticker sits. */
+.auth-frame--login {
+  --auth-frame-start: 40deg;
+}
+.auth-frame--register {
+  --auth-frame-start: 31deg;
+}
+@media (max-width: 639px) {
+  .auth-frame--login {
+    --auth-frame-start: 28deg;
+  }
+  .auth-frame--register {
+    --auth-frame-start: 22deg;
+  }
 }
 
 @keyframes auth-frame-sweep {

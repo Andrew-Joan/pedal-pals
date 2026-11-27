@@ -8,7 +8,10 @@ interface BrushUnderlineProps {
   className?: string;
 }
 
-export function BrushUnderline({ variant = 1, className }: BrushUnderlineProps) {
+export function BrushUnderline({
+  variant = 1,
+  className,
+}: BrushUnderlineProps) {
   return (
     <span
       aria-hidden="true"

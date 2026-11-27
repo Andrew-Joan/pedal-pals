@@ -6,13 +6,14 @@ import { usePathname } from "next/navigation";
 import { Search, Heart, User, ShoppingBag, Menu, X } from "lucide-react";
 import { Container } from "./Container";
 import { cn } from "cn";
+import { routes } from "@/lib/routes";
 
 const navItems = [
-  { label: "Shop", href: "/shop" },
-  { label: "Brands", href: "/brands" },
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Shop", href: routes.shop },
+  { label: "Brands", href: routes.brands },
+  { label: "Services", href: routes.services },
+  { label: "About", href: routes.about },
+  { label: "Contact", href: routes.contact },
 ];
 
 export function Header() {
@@ -25,7 +26,7 @@ export function Header() {
   return (
     <header className="bg-ink text-cream sticky top-0 z-50 border-b border-cream/10">
       <Container className="flex items-center justify-between h-20">
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href={routes.home} className="flex items-center gap-2 group">
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
               <svg
@@ -77,7 +78,7 @@ export function Header() {
           </button>
 
           <Link
-            href="/wishlist"
+            href={routes.wishlist}
             aria-label="Wishlist"
             className="relative text-cream/90 hover:text-brand-amber transition-colors p-1"
           >
@@ -90,7 +91,7 @@ export function Header() {
           </Link>
 
           <Link
-            href="/account"
+            href={routes.account}
             aria-label="Account"
             className="text-cream/90 hover:text-brand-amber transition-colors p-1"
           >
@@ -98,7 +99,7 @@ export function Header() {
           </Link>
 
           <Link
-            href="/cart"
+            href={routes.cart}
             aria-label="Cart"
             className="relative text-cream/90 hover:text-brand-amber transition-colors p-1"
           >

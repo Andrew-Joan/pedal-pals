@@ -41,7 +41,7 @@ export function FormField({
           </span>
         )}
       </div>
-      {hint && <p className="mt-1.5 font-sans text-xs text-ink/50">{hint}</p>}
+      {hint && <p className="mt-1.5 ml-1 font-sans text-xs text-ink/70">{hint}</p>}
     </div>
   );
 }

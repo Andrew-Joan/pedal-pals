@@ -32,6 +32,11 @@ interface TornDividerProps {
    * e.g. "absolute inset-x-0 bottom-0 z-20".
    */
   overlay?: boolean;
+  /**
+   * Which side is the torn paper. Left out, it is worked out from the colors
+   * (the light side). Set it when both sides are dark, e.g. a dark torn strip.
+   */
+  paper?: "above" | "below";
   className?: string;
 }
 
@@ -42,12 +47,15 @@ export function TornDivider({
   variant,
   seed = 0,
   overlay = false,
+  paper,
   className,
 }: TornDividerProps) {
   const edge = variant ?? VARIANTS[Math.abs(seed) % VARIANTS.length];
 
   // The torn paper is whichever side is light; the other side is the backdrop.
-  const paperIsBelow = LIGHT_TONES.includes(to) || !LIGHT_TONES.includes(from);
+  const paperIsBelow = paper
+    ? paper === "below"
+    : LIGHT_TONES.includes(to) || !LIGHT_TONES.includes(from);
   const paperTone = paperIsBelow ? to : from;
   const backdropTone = paperIsBelow ? from : to;
 

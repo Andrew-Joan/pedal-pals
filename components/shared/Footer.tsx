@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Container } from "./Container";
 import { Button } from "./Button";
+import { routes, shopCategoryHref } from "@/lib/routes";
 import { TornDivider } from "./TornDivider";
 
 interface FooterProps {
@@ -18,19 +19,19 @@ export function Footer({ variant = "slim" }: FooterProps) {
           <p>© 2026 Pedal Pals. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link
-              href="/privacy"
+              href={routes.privacy}
               className="hover:text-brand-amber transition-colors"
             >
               Privacy
             </Link>
             <Link
-              href="/terms"
+              href={routes.terms}
               className="hover:text-brand-amber transition-colors"
             >
               Terms
             </Link>
             <Link
-              href="/faq"
+              href={routes.faq}
               className="hover:text-brand-amber transition-colors"
             >
               Help Center
@@ -85,7 +86,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
             <ul className="space-y-2.5 text-sm text-cream/80">
               <li>
                 <Link
-                  href="/shop?category=bikes"
+                  href={shopCategoryHref("bikes")}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Bikes
@@ -93,7 +94,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/shop?category=components"
+                  href={shopCategoryHref("components")}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Components
@@ -101,7 +102,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/shop?category=accessories"
+                  href={shopCategoryHref("accessories")}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Accessories
@@ -109,7 +110,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/shop?category=apparel"
+                  href={shopCategoryHref("apparel")}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Apparel
@@ -125,7 +126,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
             <ul className="space-y-2.5 text-sm text-cream/80">
               <li>
                 <Link
-                  href="/about"
+                  href={routes.about}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Our Story
@@ -133,7 +134,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/services"
+                  href={routes.services}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Services
@@ -141,7 +142,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/careers"
+                  href={routes.careers}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Careers
@@ -149,7 +150,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href={routes.contact}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Contact
@@ -165,7 +166,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
             <ul className="space-y-2.5 text-sm text-cream/80">
               <li>
                 <Link
-                  href="/faq"
+                  href={routes.faq}
                   className="hover:text-brand-amber transition-colors"
                 >
                   FAQ
@@ -173,7 +174,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/shipping"
+                  href={routes.shipping}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Shipping
@@ -181,7 +182,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/returns"
+                  href={routes.returns}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Returns
@@ -189,7 +190,7 @@ export function Footer({ variant = "slim" }: FooterProps) {
               </li>
               <li>
                 <Link
-                  href="/warranty"
+                  href={routes.warranty}
                   className="hover:text-brand-amber transition-colors"
                 >
                   Warranty
@@ -243,13 +244,13 @@ export function Footer({ variant = "slim" }: FooterProps) {
           <p>© 2026 Pedal Pals. All rights reserved.</p>
           <div className="flex gap-6">
             <Link
-              href="/privacy"
+              href={routes.privacy}
               className="hover:text-brand-amber transition-colors"
             >
               Privacy
             </Link>
             <Link
-              href="/terms"
+              href={routes.terms}
               className="hover:text-brand-amber transition-colors"
             >
               Terms
